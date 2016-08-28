@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
-  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="js/mousetrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/application.js"></script>
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/mousetrap.js"></script>
-  <script src="/js/underscore.js"></script>
-  <script src="/js/game.js"></script>
-  <script src="/js/application.js"></script>
-
-  <title>256!</title>
+  <title>2048 CLONE</title>
+  <h2> JAVASCRIPT PRACTICE </h2>
+  <h3><a href="http://www.2048game.com"> 2048 by Gabriele Cirulli </a></h3>
 </head>
 <body>
+  <h1> 2048 CLONE </h1>
+    <table>
+      <tr>
+        <td id="00"></td>
+        <td id="01"></td>
+        <td id="02"></td>
+        <td id="03"></td>
+      </tr>
+      <tr>
+        <td id="10"></td>
+        <td id="11"></td>
+        <td id="12"></td>
+        <td id="13"></td>
+      </tr>
+      <tr>
+        <td id="20"></td>
+        <td id="21"></td>
+        <td id="22"></td>
+        <td id="23"></td>
+      </tr>
+      <tr>
+        <td id="30"></td>
+        <td id="31"></td>
+        <td id="32"></td>
+        <td id="33"></td>
+      </tr>
+    </table>
 
 </body>
 </html>
