@@ -1,5 +1,8 @@
+var _ = require("underscore");
+
 function Game(string){
   this.boardstring = string || boardstring();
+
   this.board = toRows(this.boardstring);
 
   function boardstring(){
@@ -19,23 +22,24 @@ function Game(string){
 }
 
 Game.prototype.move=function(direction){
-  var rows = this.board;
-
   if(direction==="right"){
-    for(i=0; i<4; i++){ 
+    var rows = this.board;
+    for( i=0; i<4; i++ ){ 
       var row = rows[i];
-      for(m = 3; m >= 0; m--){ 
+      var m = 3;
+      var j = 2;
+      while (j >= 0){
         if(row[m]!= 0){
-          for(j=m-1; j>=0; j--){ 
-            if(row[m]===row[j]){ 
-              row[m] = row[m] + row[j];
-              row[j] = 0;
-              break;
-            }else if(row[j] != 0){
-              break;
-            }
+          if( row[m] === row[j] ){ 
+            row[m] = row[m] + row[j];
+            row[j] = 0;
+            break;
+          } else if( row[j] != 0 ){
+            break;
           }
+          j--;
         }
+        m--;
       }
       var m = 3;
       var j = 2;
@@ -43,7 +47,7 @@ Game.prototype.move=function(direction){
         if(row[m] != 0){
           m--;
           j--;
-        }else if(row[m]===0 && row[j]!=0){
+        }else if( row[m] === 0 && row[j]!= 0 ){
           row[m] = row[j];
           row[j] = 0;
           m--;
@@ -53,15 +57,9 @@ Game.prototype.move=function(direction){
         }
       }
     }
-    var idx = _.shuffle([0,1,2,3]);
-    var rand = _.random(1,2)*2;
-    for(var r=0; r<4; r++){
-      if(rows[(idx[r])][0] === 0){
-        rows[(idx[r])][0] = rand;
-        break;
-      }
-    }
-  }else if(direction==="left"){
+    return rows;
+  } else if(direction==="left"){
+      var rows = this.board;
       for(i=0; i<4; i++){ 
         var row = rows[i];
         for(m = 0; m <= 3; m++){ 
@@ -93,16 +91,9 @@ Game.prototype.move=function(direction){
           }
         }
       }
-      var idx = _.shuffle([0,1,2,3]);
-      var rand = _.random(1,2)*2;
-      for(var r=0; r<4; r++){
-        if(rows[(idx[r])][3] === 0){
-          rows[(idx[r])][3] = rand;
-          break;
-        }
-      }
-
+      return rows;
     }else if(direction==="up"){
+      var rows = this.board;
       var columns = _.zip(rows[0], rows[1], rows[2], rows[3]);
       for(i=0; i<4; i++){ 
         var column = columns[i];
@@ -135,18 +126,11 @@ Game.prototype.move=function(direction){
           }
         }
       }
-      rows = _.unzip(columns);
-      var idx = _.shuffle([0,1,2,3]);
-      var rand = _.random(1,2)*2;
-      for(var r=0; r<4; r++){
-        if(rows[3][(idx[r])] === 0){
-          rows[3][(idx[r])] = rand;
-          break;
-        }
-      }
-    
+      return (_.unzip(columns));
     }else if(direction==="down"){
+      var rows = this.board;
       var columns = _.zip(rows[0], rows[1], rows[2], rows[3]);
+      console.log(columns)
       for(i=0; i<4; i++){ 
         var column = columns[i];
         for(m = 3; m >= 0; m--){ 
@@ -178,37 +162,16 @@ Game.prototype.move=function(direction){
           }
         }
       }
-      rows = _.unzip(columns);
-      var idx = _.shuffle([0,1,2,3]);
-      var rand = _.random(1,2)*2;
-      for(var r=0; r<4; r++){
-        if(rows[0][(idx[r])] === 0){
-          rows[0][(idx[r])] = rand;
-          break;
-        }
-      }
+      return (_.unzip(columns));
     }
-    return this.board = rows;
+
 }
 
 
-Game.prototype.full = function(){
-  for( var r=0; r<4; r++ ){
-    for( var b=0; b<4; b++){
-      if(this.board[r][b] === 0){
-        return;
-      }
-    }
-  }
+var test = new Game("2244000000002222");
+console.log(test.board);
+console.log(test.move("right"));
+console.log(test.move("right"));
 
-  for (var row=0; row<4; row++){
-    for( var m=0; m<3; m++){
-      if(this.board[row][m] === this.board[row][m+1]){
-        return;
-      } else if(this.board[m][row] === this.board[m+1][row]){
-        return;
-      }
-    }
-  }
-  return confirm("Game Over! Play again?");
-}
+
+
