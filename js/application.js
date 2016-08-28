@@ -50,5 +50,12 @@ $(document).ready(function() {
     updateBoard();
     check();
   })
+
+  $("#new-game").on('click', function(){
+    game = new Game();
+    updateBoard();
+  });
+
 });
+
 
