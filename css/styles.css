@@ -1,29 +1,47 @@
 body{
   text-align: center;
-/*  color: #766E66;*/
   color: black;
+  padding: 3%;
 }
 
 table{
+  max-width: 500px;
+  max-height: 500px;
+  width: 90vw;
+  height: 90vw;
   border-spacing: 10px;
   border-radius: 10px;
-  margin: auto;
+  margin: 10px auto;
   background-color: #542344;
-  padding: 5px;
 }
 
 td{
-  height: 120px;
-  width: 120px;
+  width: 20%;
+  height: 20%;
   border-radius: 10px;
   background-color: #CBC1B5;
-  font-size: 35px;
+  font-size: 2em;
   font-weight: bold;
 }
 
 a{
   text-decoration: underline;
   color: #766E66;
+  margin:0;
+}
+
+#new-game{
+  width: 10%;
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 10px;
+  border: 5px solid #542344;
+  border-radius: 10px;
+
+}
+
+#new-game:hover{
+  cursor: pointer;
 }
 
 .num-2{
@@ -68,4 +86,28 @@ a{
 
 .num-2048{
   background-color: #70163C;
+}
+
+@media (max-width: 800px){
+  #new-game{
+    width: 50%;
+  }
+}
+
+@media (max-width: 770px){
+  h1{
+    font-size: 2.5em;
+  }
+
+  td{
+    font-size: 1.5em;
+  }
+  p, p a{
+    font-size: 1.2em;
+  }
+
+  table{
+    border-spacing: 5px;
+  }
+
 }
