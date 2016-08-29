@@ -30,6 +30,10 @@ a{
   margin:0;
 }
 
+#score{
+  font-weight: bold;
+}
+
 #new-game{
   width: 10%;
   display: inline-block;

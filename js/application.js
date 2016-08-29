@@ -10,6 +10,7 @@ $(document).ready(function() {
         $(id).removeClass();
         $(id).addClass(cl)
         $(id).html(game.board[i][j] || "");
+        $("#score").html("pts  " + game.score);
       }
     }
   }

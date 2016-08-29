@@ -1,7 +1,7 @@
 function Game(string){
   this.boardstring = string || boardstring();
   this.board = toRows(this.boardstring);
-
+  this.score = 0;
   function boardstring(){
     return _.shuffle("0000000000000022");
   }
@@ -29,6 +29,7 @@ Game.prototype.move=function(direction){
           for(j=m-1; j>=0; j--){ 
             if(row[m]===row[j]){ 
               row[m] = row[m] + row[j];
+              this.score += row[m];
               row[j] = 0;
               break;
             }else if(row[j] != 0){
@@ -69,6 +70,7 @@ Game.prototype.move=function(direction){
             for(j=m+1; j<=3; j++){ 
               if(row[m]===row[j]){ 
                 row[m] = row[m] + row[j];
+                this.score += row[m];
                 row[j] = 0;
                 break;
               }else if(row[j] != 0){
@@ -111,6 +113,7 @@ Game.prototype.move=function(direction){
             for(j=m+1; j<=3; j++){ 
               if(column[m]===column[j]){ 
                 column[m] = column[m] + column[j];
+                this.score += column[m];
                 column[j] = 0;
                 break;
               }else if(column[j] != 0){
@@ -154,6 +157,7 @@ Game.prototype.move=function(direction){
             for(j=m-1; j>=0; j--){ 
               if(column[m]===column[j]){ 
                 column[m] = column[m] + column[j];
+                this.score += column[m];
                 column[j] = 0;
                 break;
               }else if(column[j] != 0){
